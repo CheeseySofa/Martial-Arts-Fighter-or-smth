@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://daxy5l0r18q1j"]
+
+[ext_resource type="Script" uid="uid://5ljqogr5e7u6" path="res://Scripts/player.gd" id="1_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://cpo632ij2cj3u" path="res://icon.svg" id="1_rpqav"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uvcww"]
+size = Vector2(162, 371)
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1684151279]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_kyqiw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=242721195]
+position = Vector2(3.000002, 3)
+scale = Vector2(1.40625, 2.9921875)
+texture = ExtResource("1_rpqav")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1012985528]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_uvcww")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2051554318]
+zoom = Vector2(0.7, 0.7)
+
+[node name="Dash_Input" type="Timer" parent="." unique_id=1785733445]
+wait_time = 0.3
+one_shot = true
+ignore_time_scale = true
+
+[node name="Dash_Cd" type="Timer" parent="." unique_id=99422660]
+wait_time = 10.0
+one_shot = true
+ignore_time_scale = true
+
+[connection signal="timeout" from="Dash_Input" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Dash_Cd" to="." method="_on_dash_cd_timeout"]

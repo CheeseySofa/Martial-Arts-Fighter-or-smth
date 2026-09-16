@@ -1,0 +1,35 @@
+Street Fighter Esque Fighting Game with martial arts...
+
+Hand Strike, Leg Strike, Grapple, Jump, left, right, duck, guard.. these are the controls.. double tap right or left for a dodge
+
+holding punch/kick leads to a heavy variant of leg/punch.. long wind up but yea
+
+Timed Guard leads to a parry which damages the enemy
+
+punch/kick followed by a duck moment leads to feint
+
+heavily based around like a dragon: black panther new chapter aka Kurohyou
+
+each player will also have stamina.... stamina is lost when you get parried or when your attack gets dodged.. a combo will drain it but its a normal amount
+
+p - Punch, k - Kick action, g - Grapple Action, gu - Guard Action
+
+Characters:
+Boxer = p: jab,
+	k: No kick so replaced with a hook,
+ 	g: No Grapple replaced with uppercut, 
+
+	combo:
+ 	1. p + p + k + g.. last p will be a devastating uppercut ( easy to hit );
+	2. p + k + k + k.. last k will be a Dempsey roll ( the window for execution will be low, to counter the high damage )	
+
+	Heavy Attacks:
+	p: liver shot ( can stun )
+	k: overhand punch ( breaks guard ) ( does big damage if not blocked )
+	
+	Special Actions:
+	Quick Step attacks, basically a dodge can be followed by a punch
+	
+	forward dash + punch = dashing forward jab
+	backward dash + punch = superman punch
+	
