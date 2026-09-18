@@ -5,15 +5,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvcww"]
 size = Vector2(1188, 122)
 
-[node name="Node2D" type="RigidBody2D" unique_id=1766983991]
+[node name="tile_ig" type="RigidBody2D" unique_id=1766983991]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1465622889]
 modulate = Color(0, 0, 0, 1)
 self_modulate = Color(0.07882487, 0.2122663, 0.31395477, 1)
 position = Vector2(-1, 1)
-scale = Vector2(9.34375, 1)
+scale = Vector2(13.892936, -0.38695663)
 texture = ExtResource("1_2tupl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1930815195]
 position = Vector2(-4, 1)
+scale = Vector2(1.4868695, -0.38695663)
 shape = SubResource("RectangleShape2D_uvcww")

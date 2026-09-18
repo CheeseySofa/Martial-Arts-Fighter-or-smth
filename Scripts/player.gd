@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
 const SPEED = 600
-const JUMP_VELOCITY = -500.
+const JUMP_VELOCITY = -400
 var direction = null
 var time = 0
+var dash_time = 0
 var cd = true
 var Dash_window = true
 var pressed = false
@@ -27,21 +28,27 @@ func _physics_process(delta):
 		if (a1 or d1) and Dash_window and cd:
 						
 			if a1 and perm_a:
-				velocity.x -= 1400
+				velocity.x -= 8000
 				$Dash_Cd.start()
 				cd = false
 				dashin = true
 				
 			elif d1 and perm_d:
-				velocity.x += 1400
-				print("dash right")
+				velocity.x += 8000
+				$Dash_Cd.start()
 				cd = false
 				dashin = true
 	
 	#air stuff
 	if not is_on_floor():
 		velocity += (get_gravity() + Vector2(0,1)) * delta
-			
+		if dashin:
+			dash_time += delta
+			self.velocity = self.velocity.lerp(Vector2(0,velocity.y),clamp(dash_time* 8,0,1))
+			if self.velocity.x == 0:
+				dashin = false
+				dash_time = 0
+
 	#ground stuff
 	if is_on_floor():
 		if direction:
@@ -49,9 +56,12 @@ func _physics_process(delta):
 			if !dashin:
 				velocity.x = clamp((abs(velocity.x) + (110 * time)) ,300, SPEED) * direction
 			else:
-				self.velocity = self.velocity.lerp(Vector2(0,0),time * 0.4)
+				dash_time += delta
+				self.velocity = self.velocity.lerp(Vector2(0,velocity.y),clamp(dash_time * 8,0,1))
 				if self.velocity.x == 0:
 					dashin = false
+					print("dash done")
+					dash_time = 0
 		else:
 			time = 0
 			if !dashin:
@@ -78,4 +88,5 @@ func _on_timer_timeout():
 
 func _on_dash_cd_timeout():
 	cd = true
+	print("DAsh again broski")
 	

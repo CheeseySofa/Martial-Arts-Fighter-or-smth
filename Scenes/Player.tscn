@@ -28,7 +28,6 @@ one_shot = true
 ignore_time_scale = true
 
 [node name="Dash_Cd" type="Timer" parent="." unique_id=99422660]
-wait_time = 10.0
 one_shot = true
 ignore_time_scale = true
 
