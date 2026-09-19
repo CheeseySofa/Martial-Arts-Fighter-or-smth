@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 600
-const JUMP_VELOCITY = -400
+const SPEED = 1000
+const JUMP_VELOCITY = -800
 var direction = null
 var time = 0
 var dash_time = 0
@@ -16,7 +16,6 @@ var dashin = false
 
 
 func _physics_process(delta):
-	
 	direction = Input.get_axis("A", "D")
 	
 	#Input checks in this engine happen once every frame... so to get dashing shit we need to cehck the next frame for a fresh input, hence this code is at the top
@@ -27,13 +26,13 @@ func _physics_process(delta):
 		var d1 = Input.is_action_just_pressed("D")
 		if (a1 or d1) and Dash_window and cd:
 						
-			if a1 and perm_a:
+			if a1 and perm_a and is_on_floor():
 				velocity.x -= 8000
 				$Dash_Cd.start()
 				cd = false
 				dashin = true
 				
-			elif d1 and perm_d:
+			elif d1 and perm_d and is_on_floor():
 				velocity.x += 8000
 				$Dash_Cd.start()
 				cd = false
@@ -42,13 +41,7 @@ func _physics_process(delta):
 	#air stuff
 	if not is_on_floor():
 		velocity += (get_gravity() + Vector2(0,1)) * delta
-		if dashin:
-			dash_time += delta
-			self.velocity = self.velocity.lerp(Vector2(0,velocity.y),clamp(dash_time* 8,0,1))
-			if self.velocity.x == 0:
-				dashin = false
-				dash_time = 0
-
+		
 	#ground stuff
 	if is_on_floor():
 		if direction:
@@ -60,7 +53,6 @@ func _physics_process(delta):
 				self.velocity = self.velocity.lerp(Vector2(0,velocity.y),clamp(dash_time * 8,0,1))
 				if self.velocity.x == 0:
 					dashin = false
-					print("dash done")
 					dash_time = 0
 		else:
 			time = 0
@@ -85,8 +77,5 @@ func _physics_process(delta):
 func _on_timer_timeout():
 	Dash_window = false
 
-
 func _on_dash_cd_timeout():
 	cd = true
-	print("DAsh again broski")
-	
