@@ -1,33 +1,135 @@
 [gd_scene format=3 uid="uid://daxy5l0r18q1j"]
 
 [ext_resource type="Script" uid="uid://5ljqogr5e7u6" path="res://Scripts/player.gd" id="1_kyqiw"]
-[ext_resource type="Texture2D" uid="uid://cpo632ij2cj3u" path="res://icon.svg" id="1_rpqav"]
+[ext_resource type="Texture2D" uid="uid://csyie07xkojl6" path="res://Assets/placeholder/jump/character-jump-0.png" id="3_1e7my"]
+[ext_resource type="Texture2D" uid="uid://bkqq67acgpxqs" path="res://Assets/placeholder/idle/character-idle-0.png" id="3_bhhdu"]
+[ext_resource type="PackedScene" uid="uid://c8pf2mck76cg3" path="res://Scenes/hurt_box.tscn" id="3_gntrk"]
+[ext_resource type="Texture2D" uid="uid://cr5ixs64lkt11" path="res://Assets/placeholder/run/character-run-0.png" id="3_o3h8g"]
+[ext_resource type="Texture2D" uid="uid://drxvas2aiwyxg" path="res://Assets/placeholder/run/character-run-1.png" id="4_1e7my"]
+[ext_resource type="Texture2D" uid="uid://dgjc2e8mcvkcd" path="res://Assets/placeholder/attack/character-attack-0.png" id="4_1iu4k"]
+[ext_resource type="Texture2D" uid="uid://2hxy4g8tirka" path="res://Assets/placeholder/idle/character-idle-1.png" id="4_megsn"]
+[ext_resource type="Texture2D" uid="uid://cfpum0fcvs08b" path="res://Assets/placeholder/run/character-run-2.png" id="5_arntx"]
+[ext_resource type="Texture2D" uid="uid://cyhc8pakt0lfr" path="res://Assets/placeholder/attack/character-attack-1.png" id="5_m0x7a"]
+[ext_resource type="Texture2D" uid="uid://bq7neqbt1yarl" path="res://Assets/placeholder/idle/character-idle-2.png" id="5_yoq75"]
+[ext_resource type="Texture2D" uid="uid://v1428x124o60" path="res://Assets/placeholder/attack/character-attack-2.png" id="6_5v66d"]
+[ext_resource type="Texture2D" uid="uid://dlpwvdyexa5kp" path="res://Assets/placeholder/idle/character-idle-3.png" id="6_ksbbd"]
+[ext_resource type="Texture2D" uid="uid://c08jqtawl6i48" path="res://Assets/placeholder/run/character-run-3.png" id="6_lslt6"]
+[ext_resource type="Texture2D" uid="uid://crcg3xeblpnwe" path="res://Assets/placeholder/idle/character-idle-4.png" id="7_glx4g"]
+[ext_resource type="Texture2D" uid="uid://bp31yb8fb8xtb" path="res://Assets/placeholder/run/character-run-4.png" id="7_ulo2v"]
+[ext_resource type="Texture2D" uid="uid://3enupogu16k0" path="res://Assets/placeholder/attack/character-attack-3.png" id="7_x63xi"]
+[ext_resource type="Texture2D" uid="uid://mwm4rjogyq6r" path="res://Assets/placeholder/run/character-run-5.png" id="8_1iu4k"]
+[ext_resource type="Texture2D" uid="uid://cplup2q61ulpi" path="res://Assets/placeholder/idle/character-idle-5.png" id="8_miouo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uvcww"]
-size = Vector2(162, 371)
+size = Vector2(48.456062, 95.534546)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kyqiw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_1e7my")
+}],
+"loop": 1,
+"name": &"Jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1iu4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_m0x7a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5v66d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_x63xi")
+}],
+"loop": 1,
+"name": &"Punch",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_o3h8g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1e7my")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_arntx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lslt6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ulo2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1iu4k")
+}],
+"loop": 1,
+"name": &"Run",
+"speed": 13.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bhhdu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_megsn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yoq75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ksbbd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_glx4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_miouo")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_1e7my"]
+resource_name = "Punch"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_arntx"]
+_data = {
+&"Punch": SubResource("Animation_1e7my")
+}
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1684151279]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_kyqiw")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=242721195]
-position = Vector2(-4.552945, 650.7307)
-scale = Vector2(2.5538602, 5.0739174)
-texture = ExtResource("1_rpqav")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1012985528]
-position = Vector2(-3.552948, 651.7307)
+position = Vector2(0, 218)
 scale = Vector2(1.8160783, 1.6957217)
 shape = SubResource("RectangleShape2D_uvcww")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2051554318]
-zoom = Vector2(0.3, 0.3)
-limit_enabled = false
-limit_smoothed = true
+position = Vector2(-2, -2)
+zoom = Vector2(1.2, 1.2)
+limit_top = 200
 position_smoothing_speed = 20.0
-rotation_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+drag_left_margin = 0.56
+drag_top_margin = 1.0
+drag_right_margin = 0.56
+drag_bottom_margin = 0.0
 
 [node name="Dash_Input" type="Timer" parent="." unique_id=1785733445]
 wait_time = 0.3
@@ -37,6 +139,19 @@ ignore_time_scale = true
 [node name="Dash_Cd" type="Timer" parent="." unique_id=99422660]
 one_shot = true
 ignore_time_scale = true
+
+[node name="hurt_box" parent="." unique_id=2023193731 instance=ExtResource("3_gntrk")]
+position = Vector2(500, 552)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1298376656]
+position = Vector2(9.999998, 216)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_kyqiw")
+animation = &"idle"
+frame_progress = 0.9572726
+
+[node name="Attack_Animation" type="AnimationPlayer" parent="." unique_id=326812374]
+libraries/ = SubResource("AnimationLibrary_arntx")
 
 [connection signal="timeout" from="Dash_Input" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Dash_Cd" to="." method="_on_dash_cd_timeout"]

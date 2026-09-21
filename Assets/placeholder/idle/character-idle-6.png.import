@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://btbfui8dd64cj"
+path="res://.godot/imported/character-idle-6.png-2b3e08a9f99f2670940fb31aba3cd37c.image"
+
+[deps]
+
+source_file="res://Assets/placeholder/idle/character-idle-6.png"
+dest_files=["res://.godot/imported/character-idle-6.png-2b3e08a9f99f2670940fb31aba3cd37c.image"]
+
+[params]
+

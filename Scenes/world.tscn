@@ -5,8 +5,11 @@
 
 [node name="World" type="Node2D" unique_id=1520821062]
 
-[node name="Node2D" parent="." unique_id=1766983991 instance=ExtResource("1_go701")]
-position = Vector2(583, 559)
-
 [node name="CharacterBody2D" parent="." unique_id=1684151279 instance=ExtResource("2_5a7ea")]
-position = Vector2(-121, 41)
+position = Vector2(-114, 69)
+
+[node name="node bro" type="Node2D" parent="." unique_id=209940117]
+scale = Vector2(0.5, 0.5)
+
+[node name="Node2D" parent="node bro" unique_id=1766983991 instance=ExtResource("1_go701")]
+position = Vector2(1084, 494)

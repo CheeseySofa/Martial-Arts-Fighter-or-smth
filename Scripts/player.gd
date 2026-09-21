@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-const SPEED = 1000
-const JUMP_VELOCITY = -800
+const SPEED = 650
+const JUMP_VELOCITY = -400
 var direction = null
 var time = 0
 var dash_time = 0
@@ -27,24 +27,28 @@ func _physics_process(delta):
 		if (a1 or d1) and Dash_window and cd:
 						
 			if a1 and perm_a and is_on_floor():
-				velocity.x -= 8000
+				velocity.x -= 5000
 				$Dash_Cd.start()
 				cd = false
 				dashin = true
 				
 			elif d1 and perm_d and is_on_floor():
-				velocity.x += 8000
+				velocity.x += 5000
 				$Dash_Cd.start()
 				cd = false
 				dashin = true
 	
 	#air stuff
 	if not is_on_floor():
+		$AnimatedSprite2D.play("Jump")
 		velocity += (get_gravity() + Vector2(0,1)) * delta
 		
 	#ground stuff
 	if is_on_floor():
 		if direction:
+			if ((direction == -1 and $AnimatedSprite2D.scale.x > 0) or (direction == 1 and $AnimatedSprite2D.scale.x < 0)):
+				$AnimatedSprite2D.scale.x *= -1
+			$AnimatedSprite2D.play("Run")
 			time += delta
 			if !dashin:
 				velocity.x = clamp((abs(velocity.x) + (110 * time)) ,300, SPEED) * direction
@@ -55,6 +59,7 @@ func _physics_process(delta):
 					dashin = false
 					dash_time = 0
 		else:
+			$AnimatedSprite2D.play("idle")
 			time = 0
 			if !dashin:
 				velocity.x = move_toward(velocity.x, 0, SPEED)
